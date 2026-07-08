@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Object-Space Analysis of Local Contrast Sensitivity for Hierarchical Representations of 3D Gaussians">
+  <meta name="keywords" content="CSF-3DGS">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Object-Space Analysis of Local Contrast Sensitivity for Hierarchical Representations of 3D Gaussians</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="./static/css/bootstrap-4.4.1.css">
+
+  <!-- SEO -->
+  <meta name="google-site-verification" content="8y799dCPfpAsIbbgwfPhzgS-lNAYMKKdQ6zkcxKCqZo" />
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <link rel="stylesheet" href="./static/css/dics.original.css">
+  <script src="./static/js/dics.original.js"></script>
+  <script src="./static/js/event_handler.js"></script>
+
+  <link rel="icon" type="image/x-icon" href="./static/images/favicon.ico">
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Object-Space Analysis of Local Contrast Sensitivity for Hierarchical Representations of 3D Gaussians</h1>
+          <h1 style="font-size:1.5rem; margin-bottom: 1.6rem"> SIGGRAPH 2026 Conference Paper </h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://naotoyoshii.com">Naoto Yoshii</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.img.cs.titech.ac.jp/">Suguru Saito</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.mswym.com/site/">Masataka Sawayama</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://imelab.jp/doba/">Yoshinori Dobashi</a><sup>2</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>
+              Institute of Science Tokyo,</span>
+            <span class="author-block"><sup>2</sup>
+              Hokkaido University / Prometech CG Research</span>
+          </div>
+          
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://doi.org/10.1145/3799902.3811221"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/CSF-3DGS/csf-3dgs"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+          <p>
+            Our paper and code will be released soon.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- demo video -->
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <div class="video-wrap">
+            <video poster="" id="garden" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/garden.mp4"
+                      type="video/mp4">
+            </video>
+            <div class="fixation-dot"></div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="video-wrap">
+            <video poster="" id="bicycle" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/bicycle.mp4"
+                      type="video/mp4">
+            </video>
+            <div class="fixation-dot"></div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="video-wrap">
+            <video poster="" id="kitchen" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/kitchen.mp4"
+                      type="video/mp4">
+            </video>
+            <div class="fixation-dot"></div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="video-wrap">
+            <video poster="" id="truck" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/truck.mp4"
+                      type="video/mp4">
+            </video>
+            <div class="fixation-dot"></div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="video-wrap">
+            <video poster="" id="park" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/park.mp4"
+                      type="video/mp4">
+            </video>
+            <div class="fixation-dot"></div>
+          </div>
+        </div>
+      </div>
+      <p style="text-align: center;">
+        The video above demonstrate results of foveated rendering based on our object-space perceptual evaluation.<br>
+        Our method assumes a viewing condition with the image center as the gaze point, a 31.5-inch monitor, and a viewing distance of 70 cm.<br>
+        Blue, yellow, and red represent levels 0, 1, and 2, respectively, with rendering quality decreasing in that order.
+      </p>  
+    </div>
+  </div>
+</section>
+
+<!-- Abstract. -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            3D Gaussian Splatting (3DGS) has recently attracted considerable attention as an efficient representation for high-quality novel-view synthesis.
+            However, 3DGS typically relies on a large number of Gaussian primitives, making perceptually informed level-of-detail control essential for balancing visual quality and rendering efficiency.
+          </p>
+          <p>
+            In this paper, we present an object-space analysis framework of contrast sensitivity for 3D Gaussian representations.
+            By exploiting the analytical Fourier transform of Gaussian primitives and the projection-slice theorem, we estimate the spatial frequency response of projected Gaussians without explicit rasterization.
+            This enables direct perceptual assessment of Gaussian primitives in object space under given viewing conditions.
+          </p>
+          <p>
+            As an application of this analysis, we integrate the proposed perceptual assessment into a hierarchical 3DGS representation and realize a foveated rendering scheme that selects appropriate Gaussian levels at runtime using simple comparisons.
+            Experimental results on real-world scenes demonstrate that the proposed method preserves visual quality while reducing rendering cost compared to full-quality rendering.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- method overview -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Method Overview</h2>
+        <div class="content has-text-justified">
+          <p></p>
+        </div>
+        <div class="content has-text-justified">
+          <img src="./static/images/method.webp" style="margin-bottom: 10px; margin-top:10px;">
+
+          <p>
+            Our method provides an object-space analytical framework for the perceptual evaluation of projected Gaussians without explicit pre-rendering.
+            To achieve this, we compute the frequency response of a projected Gaussian directly from the parameters of the Gaussian in object space.
+            First, we analytically apply the Fourier transform to a 3D Gaussian to obtain its 3D frequency response.
+            Next, using the Projection-slice theorem, we derive the 2D frequency response of the projected Gaussian.
+            We then compute the contrast at each spatial frequency from the obtained frequency response.
+            Finally, by evaluating the resulting contrast based on the contrast sensitivity function (CSF),
+            we assess the visual quality of the projected Gaussian directly in object space.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- visualization for each level -->
+<section class="section">
+  <div class="container">
+    <div class="column is-centered has-text-centered">
+      <h2 class="title is-3">Gaussian Hierarchy</h2>
+      <div class="content has-text-justified">
+        <p style="text-align: center;">
+          Our method construct a hierarchical representation from the input Gaussian primitives (level 0) using a greedy <i>k</i>-nearest neighbor clustering process.
+        </p>
+      </div>
+
+      <div class="content-wrapper" style="display: flex; justify-content: center;">
+        <div class="content" style="width: 70%;">
+          <ul class="nav nav-tabs nav-fill nav-justified" id="object-scale-recon">
+            <li class="nav-item">
+              <a class="nav-link active" onclick="objectSceneEvent(0)">Train</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="objectSceneEvent(1)">Truck</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="objectSceneEvent(2)">Kitchen</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="objectSceneEvent(3)">Bicycle</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="objectSceneEvent(4)">Stump</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" onclick="objectSceneEvent(5)">Park</a>
+            </li>
+          </ul>
+
+          <div class="b-dics level-visualization" style="font-weight: 600;">
+            <img src="./static/images/gaussian_hierarchy/train_00000_lv0.webp" alt="Level 0">
+            <img src="./static/images/gaussian_hierarchy/train_00000_lv1.webp" alt="Level 1">
+            <img src="./static/images/gaussian_hierarchy/train_00000_lv2.webp" alt="Level 2">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Foveated Rendering -->
+<section class="section">
+  <div class="container ">
+    <div class=" has-text-centered">
+      <h2 class="title is-3">Foveated Rendering</h2>
+      <div class="content has-text-justified">
+        <p style="text-align: center;">
+          Comparison of rendering results between our method and the reference method.
+          The reference method uses only level 0 Gaussians for rendering.<br>
+          Our method assumes a viewing condition with the image center as the gaze point, a 31.5-inch monitor, and a viewing distance of 70 cm.
+        </p>
+      </div>
+      <div class="columns is-centered">
+
+        <div class="column">
+            <div class="columns is-centered">
+              <div class="column content">
+                <div id="highlevel1" class="bal-container-small">
+
+                  <div class="bal-after">
+                    <img src="./static/images/foveated_rendering/counter_00013_ours.webp">
+                    <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                      Ours
+                    </div>
+                  </div>
+
+                  <div class="bal-before" style="width:40%;">
+                    <div class="bal-before-inset">
+                      <img src="./static/images/foveated_rendering/counter_00013_ref.webp">
+                      <div class="bal-beforePosition beforeLabel">
+                        Reference (level 0)
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bal-handle" style="left:40%;">
+                    <span class=" handle-left-arrow"></span>
+                    <span class="handle-right-arrow"></span>
+                  </div>
+
+                </div>
+
+
+                <div id="highlevel2" class="bal-container-small">
+
+                  <div class="bal-after">
+                    <img src="./static/images/foveated_rendering/garden_00002_ours.webp">
+                    <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                      Ours
+                    </div>
+                  </div>
+
+                  <div class="bal-before" style="width:60%;">
+                    <div class="bal-before-inset">
+                      <img src="./static/images/foveated_rendering/garden_00002_ref.webp">
+                      <div class="bal-beforePosition beforeLabel">
+                        Reference
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bal-handle" style="left:60%;">
+                    <span class=" handle-left-arrow"></span>
+                    <span class="handle-right-arrow"></span>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+        <div class="column">
+          <div class="columns is-centered">
+            <div class="column content">
+
+              <div id="highlevel3" class="bal-container-small">
+                <div class="bal-after">
+                  <img src="./static/images/foveated_rendering/kitchen_00008_ours.webp">
+                  <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                    Ours
+                  </div>
+                </div>
+
+                <div class="bal-before" style="width:60%;">
+                  <div class="bal-before-inset">
+                    <img src="./static/images/foveated_rendering/kitchen_00008_ref.webp">
+                    <div class="bal-beforePosition beforeLabel">
+                      Reference
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bal-handle" style="left:60%;">
+                  <span class=" handle-left-arrow"></span>
+                  <span class="handle-right-arrow"></span>
+                </div>
+
+              </div>
+
+              <div id="highlevel4" class="bal-container-small">
+                <div class="bal-after">
+                  <img src="./static/images/foveated_rendering/stump_00002_ours.webp">
+                  <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                    Ours
+                  </div>
+                </div>
+
+                <div class="bal-before" style="width:40%;">
+                  <div class="bal-before-inset">
+                    <img src="./static/images/foveated_rendering/stump_00002_ref.webp">
+                    <div class="bal-beforePosition beforeLabel">
+                      Reference
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bal-handle" style="left:40%;">
+                  <span class=" handle-left-arrow"></span>
+                  <span class="handle-right-arrow"></span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Object-space vs Image-space -->
+<section class="section">
+  <div class="container ">
+    <div class=" has-text-centered">
+      <h2 class="title is-3">Image-space vs Object-space</h2>
+      <div class="content has-text-justified">
+        <p style="text-align: center;">
+          Comparison of rendering results between our object-space method and image-space blur [Tursun+19].<br>
+          We conducted the experiment under a viewing condition with the image center as the gaze point, a 31.5-inch monitor, and a viewing distance of 70 cm.
+        </p>
+      </div>
+      <div class="columns is-centered">
+
+        <div class="column">
+            <div class="columns is-centered">
+              <div class="column content">
+                <div id="obj-img-comp1" class="bal-container-small">
+
+                  <div class="bal-after">
+                    <img src="./static/images/image_vs_object/bicycle_00013_object.webp">
+                    <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                      Object-space
+                    </div>
+                  </div>
+
+                  <div class="bal-before" style="width:40%;">
+                    <div class="bal-before-inset">
+                      <img src="./static/images/image_vs_object/bicycle_00013_image.webp">
+                      <div class="bal-beforePosition beforeLabel">
+                        Image-space
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bal-handle" style="left:40%;">
+                    <span class=" handle-left-arrow"></span>
+                    <span class="handle-right-arrow"></span>
+                  </div>
+
+                </div>
+
+
+                <div id="obj-img-comp2" class="bal-container-small">
+
+                  <div class="bal-after">
+                    <img src="./static/images/image_vs_object/58e7_00038_object.webp">
+                    <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                      Object-space
+                    </div>
+                  </div>
+
+                  <div class="bal-before" style="width:60%;">
+                    <div class="bal-before-inset">
+                      <img src="./static/images/image_vs_object/58e7_00038_image.webp">
+                      <div class="bal-beforePosition beforeLabel">
+                        Image-space
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bal-handle" style="left:60%;">
+                    <span class=" handle-left-arrow"></span>
+                    <span class="handle-right-arrow"></span>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+        <div class="column">
+          <div class="columns is-centered">
+            <div class="column content">
+
+              <div id="obj-img-comp3" class="bal-container-small">
+                <div class="bal-after">
+                  <img src="./static/images/image_vs_object/train_00037_object.webp">
+                  <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                    Object-space
+                  </div>
+                </div>
+
+                <div class="bal-before" style="width:60%;">
+                  <div class="bal-before-inset">
+                    <img src="./static/images/image_vs_object/train_00037_image.webp">
+                    <div class="bal-beforePosition beforeLabel">
+                      Image-space
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bal-handle" style="left:60%;">
+                  <span class=" handle-left-arrow"></span>
+                  <span class="handle-right-arrow"></span>
+                </div>
+
+              </div>
+
+              <div id="obj-img-comp4" class="bal-container-small">
+                <div class="bal-after">
+                  <img src="./static/images/image_vs_object/bonsai_00012_object.webp">
+                  <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                    Object-space
+                  </div>
+                </div>
+
+                <div class="bal-before" style="width:40%;">
+                  <div class="bal-before-inset">
+                    <img src="./static/images/image_vs_object/bonsai_00012_image.webp">
+                    <div class="bal-beforePosition beforeLabel">
+                      Image-space
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bal-handle" style="left:40%;">
+                  <span class=" handle-left-arrow"></span>
+                  <span class="handle-right-arrow"></span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- visual comparsion-->
+<section class="section">
+  <div class="container ">
+    <div class=" has-text-centered">
+      <h2 class="title is-3">Visual Comparisons</h2>
+      <div class="content has-text-justified">
+        <p style="text-align: center;">
+          Comparison of rendering results between our method and baseline method (Fov-GS [Fan+25]).<br>
+          We conducted the experiment under a viewing condition with the image center as the gaze point, a 31.5-inch monitor, and a viewing distance of 70 cm.
+        </p>
+      </div>
+      <div class="columns is-centered">
+
+        <div class="column">
+            <div class="columns is-centered">
+              <div class="column content">
+                <div id="viscomp1" class="bal-container-small">
+
+                  <div class="bal-after">
+                    <img src="./static/images/fovgs_vs_ours/9df8_00049_ours.webp">
+                    <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                      Ours
+                    </div>
+                  </div>
+
+                  <div class="bal-before" style="width:40%;">
+                    <div class="bal-before-inset">
+                      <img src="./static/images/fovgs_vs_ours/9df8_00049_fovgs.webp">
+                      <div class="bal-beforePosition beforeLabel">
+                        Fov-GS
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bal-handle" style="left:40%;">
+                    <span class=" handle-left-arrow"></span>
+                    <span class="handle-right-arrow"></span>
+                  </div>
+
+                </div>
+
+
+                <div id="viscomp2" class="bal-container-small">
+
+                  <div class="bal-after">
+                    <img src="./static/images/fovgs_vs_ours/room_00002_ours.webp">
+                    <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                      Ours
+                    </div>
+                  </div>
+
+                  <div class="bal-before" style="width:60%;">
+                    <div class="bal-before-inset">
+                      <img src="./static/images/fovgs_vs_ours/room_00002_fovgs.webp">
+                      <div class="bal-beforePosition beforeLabel">
+                        Fov-GS
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bal-handle" style="left:60%;">
+                    <span class=" handle-left-arrow"></span>
+                    <span class="handle-right-arrow"></span>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+        <div class="column">
+          <div class="columns is-centered">
+            <div class="column content">
+
+              <div id="viscomp3" class="bal-container-small">
+                <div class="bal-after">
+                  <img src="./static/images/fovgs_vs_ours/treehill_00015_ours.webp">
+                  <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                    Ours
+                  </div>
+                </div>
+
+                <div class="bal-before" style="width:60%;">
+                  <div class="bal-before-inset">
+                    <img src="./static/images/fovgs_vs_ours/treehill_00015_fovgs.webp">
+                    <div class="bal-beforePosition beforeLabel">
+                      Fov-GS
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bal-handle" style="left:60%;">
+                  <span class=" handle-left-arrow"></span>
+                  <span class="handle-right-arrow"></span>
+                </div>
+
+              </div>
+
+              <div id="viscomp4" class="bal-container-small">
+                <div class="bal-after">
+                  <img src="./static/images/fovgs_vs_ours/truck_00008_ours.webp">
+                  <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                    Ours
+                  </div>
+                </div>
+
+                <div class="bal-before" style="width:40%;">
+                  <div class="bal-before-inset">
+                    <img src="./static/images/fovgs_vs_ours/truck_00008_fovgs.webp">
+                    <div class="bal-beforePosition beforeLabel">
+                      Fov-GS
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bal-handle" style="left:40%;">
+                  <span class=" handle-left-arrow"></span>
+                  <span class="handle-right-arrow"></span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Gaze-point Movement</h2>
+        <div class="content has-text-justified">
+          <p style="text-align: center;">
+            Gaze-point movement demonstration of our method.<br>
+            We conducted the experiment under a viewing condition with a 31.5-inch monitor and a viewing distance of 70 cm.
+          </p>
+        </div>
+
+        <div class="content has-text-justified">
+          <div id="" class="bal-container-small">
+            <video poster="" id="garden" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/dummy_gaze_garden_20.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{yoshii2026csf3dgs,
+      author  = {Naoto Yoshii and Suguru Saito and Masataka Sawayama and Yoshinori Dobashi},
+      title   = {Object-Space Analysis of Local Contrast Sensitivity for Hierarchical Representations of 3D Gaussians},
+      journal = {},
+      number  = {},
+      volume  = {},
+      year    = {2026},
+      doi     = {}
+}</code></pre>
+  </div>
+</section> -->
+
+
+<script src="./static/js/new.js"></script>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            We have built this page based on the project pages of <a href="https://nerfies.github.io/">Nerfies</a>, <a href="https://city-super.github.io/octree-gs/">Octree-GS</a>, and <a href="https://3dgs-flod.github.io/flod/">FLoD</a>.
+            We thank the authors for sharing their project page templates and source codes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+
+
+</body>
+</html>
