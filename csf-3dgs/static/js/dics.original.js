@@ -62,7 +62,13 @@ let defaultOptions = {
   Dics.prototype._load = function(firstImage, maxCounter = 100000) {
     if (firstImage.naturalWidth) {
       this._buidAfterFirstImageLoad(firstImage);
+      let lastContainerSize = this.container.getBoundingClientRect()[this.config.sizeField];
       window.addEventListener("resize", () => {
+        let nextContainerSize = this.container.getBoundingClientRect()[this.config.sizeField];
+        if (Math.abs(nextContainerSize - lastContainerSize) < 1) {
+          return;
+        }
+        lastContainerSize = nextContainerSize;
         this._setContainerWidth(firstImage);
         this._resetSizes();
       });
