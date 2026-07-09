@@ -161,6 +161,7 @@ body {
   width: 100%;
   aspect-ratio: 16 / 9;
   cursor: grab;
+  touch-action: none;
   overflow: hidden;
   border-radius: 10px;
   margin: 5px;
@@ -292,7 +293,12 @@ body {
   /* border-radius: 1000px; */
   z-index: 20;
   pointer-events: auto;
+  touch-action: none;
   /* box-shadow: 0 0 10px rgb(12, 12, 12); */
+}
+
+.level-visualization .b-dics__text {
+  font-family: 'Noto Sans', sans-serif;
 }
 
 /* .handle-left-arrow,

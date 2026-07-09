@@ -25,21 +25,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
     BeforeAfter.prototype.init = function () {
         const self = this;
-        this.handle.addEventListener('mousedown', function (e) { self.onDragStart(e); });
-        document.addEventListener('mousemove', function (e) { self.onDrag(e); });
-        document.addEventListener('mouseup', function () { self.onDragEnd(); });
+        this.handle.addEventListener('pointerdown', function (e) { self.onDragStart(e); });
+        document.addEventListener('pointermove', function (e) { self.onDrag(e); });
+        document.addEventListener('pointerup', function () { self.onDragEnd(); });
+        document.addEventListener('pointercancel', function () { self.onDragEnd(); });
         this.dragging = false;
 
         syncBeforeAfterSize(this.container);
     };
 
     BeforeAfter.prototype.onDragStart = function (e) {
+        e.preventDefault();
         this.dragging = true;
+        this.handle.setPointerCapture(e.pointerId);
         this.update(e.clientX);
     };
 
     BeforeAfter.prototype.onDrag = function (e) {
         if (this.dragging) {
+            e.preventDefault();
             this.update(e.clientX);
         }
     };
