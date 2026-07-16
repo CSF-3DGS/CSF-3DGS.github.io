@@ -499,15 +499,24 @@ body {
   left: 50%;
   top: 50%;
 
-  width: 20px;
-  height: 20px;
+  width: 2.4%;
+  height: auto;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
+  box-sizing: border-box;
 
-  background: red;
-  border: 2px solid white;
+  background: white;
 
   transform: translate(-50%, -50%);
   pointer-events: none;
+}
+
+.fixation-dot::after {
+  content: "";
+  position: absolute;
+  inset: 10%;
+  border-radius: 50%;
+  background: red;
 }
 
 @media screen and (max-width: 768px) {
